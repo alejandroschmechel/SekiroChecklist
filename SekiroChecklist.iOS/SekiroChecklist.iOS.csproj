@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CE0AC0E7-1182-43F3-964F-A72CD135B3E6}</ProjectGuid>
+    <ProjectGuid>{805DE32C-F578-48A4-A63C-B590F4423870}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{89a4fe7c-635d-49c9-8d8c-5cd363c0d68d}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -134,7 +134,18 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>3.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\SekiroChecklist\SekiroChecklist.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\SekiroChecklist\SekiroChecklist.csproj">
+      <Project>{F5884D2F-B776-44A1-A3D1-BF2F15C20C79}</Project>
+      <Name>SekiroChecklist</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

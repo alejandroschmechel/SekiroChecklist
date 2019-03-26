@@ -6,13 +6,13 @@ using SekiroChecklist.Models;
 
 namespace SekiroChecklist.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore
     {
-        List<Item> items;
+        static List<Item> Items { get; set; }
 
         public MockDataStore()
         {
-            items = new List<Item>();
+            Items = new List<Item>();
             var mockItems = new List<Item>
             {
                 new Item {
@@ -51,42 +51,42 @@ namespace SekiroChecklist.Services
 
             foreach (var item in mockItems)
             {
-                items.Add(item);
+                Items.Add(item);
             }
         }
 
         public async Task<bool> AddItemAsync(Item item)
         {
-            items.Add(item);
+            Items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public static async Task<bool> UpdateItemAsync(Item item)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(oldItem);
-            items.Add(item);
+            var oldItem = Items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+            Items.Remove(oldItem);
+            Items.Add(item);
 
             return await Task.FromResult(true);
         }
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
-            items.Remove(oldItem);
+            var oldItem = Items.Where((Item arg) => arg.Id == id).FirstOrDefault();
+            Items.Remove(oldItem);
 
             return await Task.FromResult(true);
         }
 
         public async Task<Item> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+            return await Task.FromResult(Items.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await Task.FromResult(items);
+            return await Task.FromResult(Items);
         }
     }
 }

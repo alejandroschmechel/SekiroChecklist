@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using SekiroChecklist.Models;
 using SekiroChecklist.ViewModels;
+using SekiroChecklist.Services;
 
 namespace SekiroChecklist.Views
 {
@@ -38,6 +39,11 @@ namespace SekiroChecklist.Views
         {
             Step it = (Step)e.Item;
             Navigation.PushAsync(new StepDetailPage(it));
+        }
+
+        void Handle_Toggled(object sender, EventArgs e)
+        {
+            Step it = (sender as Switch).Parent.BindingContext as Step;
         }
     }
 }

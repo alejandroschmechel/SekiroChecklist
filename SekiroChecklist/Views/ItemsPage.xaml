@@ -11,9 +11,10 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Text}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" TextColor="#ea9525"/>
-                             </StackLayout>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding Text}" VerticalOptions="Center" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" TextColor="#ea9525"/>
+                                <Switch HorizontalOptions="End" IsToggled="{Binding Status}" OnColor="#ea9525" VerticalOptions="Center" /> 
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
