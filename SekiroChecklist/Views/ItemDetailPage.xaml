@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SekiroChecklist.Views.ItemDetailPage" 
+    Title="{Binding Title}"
+    BackgroundColor="Black">
+    <StackLayout>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Description:" FontSize="Medium" TextColor="#ea9525"/>
+            <Label Text="{Binding Item.Description}" FontSize="Small" TextColor="#ea9525"/>
+        </StackLayout>
+        <ListView x:Name="StepsListView" BackgroundColor="Black" ItemsSource="{Binding Item.Steps}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemTapped="Handle_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" BindingContext="{Binding .}">
+                            <Label Text="{Binding Title}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" TextColor="#ea9525" />
+                         </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

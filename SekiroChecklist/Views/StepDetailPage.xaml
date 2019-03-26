@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SekiroChecklist.Views.StepDetailPage" 
+    Title="{Binding Title}"
+    BackgroundColor="Black">
+    <StackLayout>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="How:" FontSize="Medium" TextColor="#ea9525"/>
+            <Label Text="{Binding HowTo}" FontSize="Small" TextColor="#ea9525"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
