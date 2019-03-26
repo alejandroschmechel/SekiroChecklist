@@ -49,5 +49,11 @@ namespace SekiroChecklist.Views
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+        void Handle_Toggled(object sender, EventArgs e)
+        {
+            Item it = (sender as Switch).Parent.BindingContext as Item;
+            App.Database.SaveItemAsync(it);
+        }
     }
 }

@@ -13,7 +13,7 @@
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <Label HorizontalOptions="StartAndExpand" Text="{Binding Text}" VerticalOptions="Center" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" TextColor="#ea9525"/>
-                                <Switch HorizontalOptions="End" IsToggled="{Binding Status}" OnColor="#ea9525" VerticalOptions="Center" /> 
+                                <Switch HorizontalOptions="End" IsToggled="{Binding Status}" OnColor="#ea9525" VerticalOptions="Center" Toggled="Handle_Toggled" /> 
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

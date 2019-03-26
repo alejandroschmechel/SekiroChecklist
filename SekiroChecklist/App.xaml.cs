@@ -4,34 +4,30 @@ using Xamarin.Forms.Xaml;
 using SekiroChecklist.Views;
 using System.Collections.Generic;
 using SekiroChecklist.Models;
-using Newtonsoft.Json;
 using Plugin.Settings.Abstractions;
 using Plugin.Settings;
+using SekiroChecklist.Repositories;
+using System.IO;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace SekiroChecklist
 {
     public partial class App : Application
     {
+        static ItemsRepository ItemsRepo;
+
         private static ISettings AppSettings =>
             CrossSettings.Current;
 
-        public static List<Item> SavedContext
+        public static ItemsRepository Database
         {
             get
             {
-                List<Item> bus = null;
-                var serializedBus = AppSettings.GetValueOrDefault(nameof(SavedContext), string.Empty); ;
-                if (serializedBus != null)
+                if (ItemsRepo == null)
                 {
-                    bus = JsonConvert.DeserializeObject<List<Item>>(serializedBus);
+                    ItemsRepo = new ItemsRepository(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SekiroChecklist.db3"));
                 }
-
-                return bus;
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(nameof(SavedContext), JsonConvert.SerializeObject(value));
+                return ItemsRepo;
             }
         }
 

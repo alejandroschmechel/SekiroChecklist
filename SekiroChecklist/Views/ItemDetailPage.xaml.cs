@@ -44,6 +44,7 @@ namespace SekiroChecklist.Views
         void Handle_Toggled(object sender, EventArgs e)
         {
             Step it = (sender as Switch).Parent.BindingContext as Step;
+            App.Database.SaveStep(it);
         }
     }
 }

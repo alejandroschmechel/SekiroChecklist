@@ -6,5 +6,6 @@ namespace SekiroChecklist.Models
         public string Title { get; set; }
         public string HowTo { get; set; }
         public bool Status { get; set; }
+        public int ItemId { get; set; }
     }
 }

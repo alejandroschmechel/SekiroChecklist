@@ -10,6 +10,7 @@ namespace SekiroChecklist.ViewModels
         public ItemDetailViewModel(Item item = null)
         {
             Title = item?.Text;
+            item.Steps = App.Database.GetStepsFromItem(item).Result;
             Item = item;
         }
     }
